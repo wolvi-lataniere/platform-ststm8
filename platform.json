@@ -1,7 +1,7 @@
 {
   "name": "ststm8",
   "title": "ST STM8",
-  "description": "The STM8 is an 8-bit microcontroller family by STMicroelectronics an extended variant of the ST7 microcontroller architecture. STM8 microcontrollers are particularly low cost for a full-featured 8-bit microcontroller.",
+  "description": "The STM8 is an 8-bit microcontroller family by STMicroelectronics an extended variant of the ST7 microontroller architecture. STM8 microcontrollers are particularly low cost for a full-featured 8-bit microcontroller.",
   "url": "https://www.st.com/en/microcontrollers/stm8-8-bit-mcus.html",
   "homepage": "http://platformio.org/platforms/ststm8",
   "license": "Apache-2.0",
@@ -12,10 +12,11 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-ststm8.git"
   },
-  "version": "1.0.1",
-  "packageRepositories": [
-    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "http://dl.platformio.org/packages/manifest.json"
+  "version": "1.0.2",
+    "packageRepositories": [
+        "https://wolvi-lataniere.myddns.me/wolverine/platformio/manifest.json",
+        "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+        "http://dl.platformio.org/packages/manifest.json"
   ],
   "frameworks": {
     "arduino": {
@@ -25,7 +26,12 @@
     "spl": {
       "package": "framework-ststm8spl",
       "script": "builder/frameworks/spl.py"
-    }
+    },
+      "spl-l15x": {
+          "package" : "framework-ststm8spl-l15x",
+          "script" : "builder/frameworks/spl-l15x.py"
+      }
+
   },
   "packages": {
      "toolchain-sdcc": {
@@ -42,6 +48,11 @@
       "optional": true,
       "version": "0.20301.181217"
     },
+      "framework-ststm8spl-l15x":{
+          "type":"framework",
+          "optional":true,
+          "version":"1.6.2"
+      },
     "tool-stm8binutils": {
       "type": "uploader",
       "version": "0.230.0"

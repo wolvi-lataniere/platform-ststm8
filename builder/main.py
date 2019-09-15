@@ -147,15 +147,31 @@ if upload_protocol == "serial":
 
 elif "stlink" in upload_protocol:
     mcu = board_config.get("build.mcu")
-    env.Replace(
-        UPLOADER="stm8flash",
-        UPLOADERFLAGS=[
-            "-c", "$UPLOAD_PROTOCOL",
-            "-p", "%s" % mcu[:8] + "?" + mcu[9],
-            "-s", "flash", "-w"
-        ],
-        UPLOADCMD='"$UPLOADER" $UPLOADERFLAGS $SOURCE'
-    )
+
+    import os
+    known_proto = os.popen("stm8flash -l").read().split(" ")
+    print(known_proto)
+
+    if not mcu in known_proto:
+        env.Replace(
+            UPLOADER="stm8flash",
+            UPLOADERFLAGS=[
+                "-c", "$UPLOAD_PROTOCOL",
+                "-p", "%s" % mcu[:8] + "?" + mcu[9],
+                "-s", "flash", "-w"
+            ],
+            UPLOADCMD='"$UPLOADER" $UPLOADERFLAGS $SOURCE'
+        )
+    else:
+        env.Replace(
+            UPLOADER="stm8flash",
+            UPLOADERFLAGS=[
+                "-c", "$UPLOAD_PROTOCOL",
+                "-p", "%s" % mcu,
+                "-s", "flash", "-w"
+            ],
+            UPLOADCMD='"$UPLOADER" $UPLOADERFLAGS $SOURCE'
+        )
 
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
 

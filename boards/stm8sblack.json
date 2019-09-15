@@ -1,15 +1,14 @@
 {
   "build": {
-    "core": "sduino",
-    "extra_flags": "-DSTM8S_BLACK -DSTM8S105",
+    "core": "spl-l15x",
+    "extra_flags": "-DSTM8L051F3P6 -DSTM8L051F3",
     "f_cpu": "16000000L",
     "cpu": "stm8",
-    "mcu": "stm8s105k4t6",
-    "variant": "stm8sblack"
+    "mcu": "stm8l051f3p6",
+    "variant": "stm8l051"
   },
   "frameworks": [
-    "arduino",
-    "spl"
+      "spl-l15x"
   ],
   "upload": {
     "maximum_ram_size": 2048,

@@ -1,0 +1,24 @@
+{
+  "build": {
+    "core": "spl-l15x",
+    "extra_flags": "-DSTM8L05X_LD_VL",
+    "f_cpu": "16000000L",
+    "cpu": "stm8",
+    "mcu": "stm8l051f3",
+    "variant": "stm8l05x_ld_vl"
+  },
+  "frameworks": [
+      "spl-l15x"
+  ],
+  "upload": {
+    "maximum_ram_size": 2048,
+    "maximum_size": 16384,
+    "protocol": "stlinkv2",
+    "protocols": [
+      "stlinkv2"
+    ]
+  },
+    "name": "ST STM8L051F3 Breakout Board",
+    "url":"None",
+  "vendor": "ST"
+}
